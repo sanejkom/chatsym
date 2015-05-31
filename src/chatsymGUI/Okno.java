@@ -5,6 +5,9 @@
  */
 package chatsymGUI;
 
+import java.util.ArrayList;
+import kontener.Tree;
+
 /**
  *
  * @author Mateusz
@@ -18,6 +21,8 @@ public class Okno extends javax.swing.JFrame {
         initComponents();
     }
 
+    Tree t = new Tree();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,76 +32,76 @@ public class Okno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        poleTekstowe = new javax.swing.JTextField();
+        wyslij = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        oknoCzatu = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        zakoncz = new javax.swing.JButton();
+        opcje = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        statSlowa = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        statNgramy = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        statGraf = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        poleTekstowe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                poleTekstoweActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Wyślij");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        wyslij.setText("Wyślij");
+        wyslij.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                wyslijActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Użytkownik:\nWitaj!\n\nProgram:\nWitaj użytkowniku!");
-        jScrollPane1.setViewportView(jTextArea1);
+        oknoCzatu.setColumns(20);
+        oknoCzatu.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        oknoCzatu.setRows(5);
+        oknoCzatu.setText("Użytkownik:\nWitaj!\n\nProgram:\nWitaj użytkowniku!");
+        jScrollPane1.setViewportView(oknoCzatu);
 
         jLabel1.setText("Okno czatu");
 
         jLabel2.setText("Statystyki");
 
-        jButton2.setText("Zakończ");
+        zakoncz.setText("Zakończ");
 
-        jButton3.setText("Opcje");
+        opcje.setText("Opcje");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        statSlowa.setColumns(20);
+        statSlowa.setRows(5);
+        jScrollPane2.setViewportView(statSlowa);
 
         jLabel3.setText("Najczęstsze słowa");
 
         jLabel4.setText("Najczęstsze n-gramy");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        statNgramy.setColumns(20);
+        statNgramy.setRows(5);
+        jScrollPane3.setViewportView(statNgramy);
 
         jLabel5.setText("Graf przejść");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        statGraf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout statGrafLayout = new javax.swing.GroupLayout(statGraf);
+        statGraf.setLayout(statGrafLayout);
+        statGrafLayout.setHorizontalGroup(
+            statGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        statGrafLayout.setVerticalGroup(
+            statGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 140, Short.MAX_VALUE)
         );
 
@@ -110,13 +115,13 @@ public class Okno extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
+                                .addComponent(zakoncz)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3)
+                                .addComponent(opcje)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addComponent(wyslij))
                             .addComponent(jScrollPane1)
-                            .addComponent(jTextField1))
+                            .addComponent(poleTekstowe))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -128,7 +133,7 @@ public class Okno extends javax.swing.JFrame {
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)))
                             .addComponent(jLabel5)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(statGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(252, 252, 252)
@@ -149,7 +154,7 @@ public class Okno extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(poleTekstowe, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
@@ -162,25 +167,35 @@ public class Okno extends javax.swing.JFrame {
                                 .addComponent(jLabel5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(wyslij)
+                            .addComponent(zakoncz)
+                            .addComponent(opcje)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(221, 221, 221)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(statGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void poleTekstoweActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poleTekstoweActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_poleTekstoweActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void wyslijActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wyslijActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String s = poleTekstowe.getText();
+        String[] arr = s.split(" ");
+        ArrayList<String> prefiks = new ArrayList<>();
+        int size = arr.length;
+        for (int i = 0; i < size - 2; i++) {
+            prefiks.clear();
+            prefiks.add(arr[i]);
+            prefiks.add(arr[i + 1]);
+            t.dodaj(prefiks, arr[i + 2]);
+        }
+    }//GEN-LAST:event_wyslijActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,21 +233,21 @@ public class Okno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea oknoCzatu;
+    private javax.swing.JButton opcje;
+    private javax.swing.JTextField poleTekstowe;
+    private javax.swing.JPanel statGraf;
+    private javax.swing.JTextArea statNgramy;
+    private javax.swing.JTextArea statSlowa;
+    private javax.swing.JButton wyslij;
+    private javax.swing.JButton zakoncz;
     // End of variables declaration//GEN-END:variables
 }

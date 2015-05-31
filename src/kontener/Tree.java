@@ -13,6 +13,12 @@ import java.util.ArrayList;
  */
 public class Tree {
 
+    private Node head;
+
+    public void Tree() {
+        head = null;
+    }
+
     public static class Node {
 
         public ArrayList<String> prefiks;
@@ -28,6 +34,10 @@ public class Tree {
             this.lewy = null;
             this.prawy = null;
         }
+    }
+
+    public void dodaj(ArrayList<String> pref, String suf) {
+        head = dodaj(head, pref, suf);
     }
 
     private Node dodaj(Node t, ArrayList<String> pref, String suf) {
