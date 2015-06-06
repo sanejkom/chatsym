@@ -161,11 +161,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Zako&#x144;cz"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="zakonczActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcje">
       <Properties>
         <Property name="text" type="java.lang.String" value="Opcje"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opcjeActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>

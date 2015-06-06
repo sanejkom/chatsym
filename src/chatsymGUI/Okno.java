@@ -23,7 +23,7 @@ public class Okno extends javax.swing.JFrame {
     }
 
     Tree t = new Tree();
-    
+
     private static Random rand = new Random();
 
     /**
@@ -79,8 +79,18 @@ public class Okno extends javax.swing.JFrame {
         jLabel2.setText("Statystyki");
 
         zakoncz.setText("Zakończ");
+        zakoncz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zakonczActionPerformed(evt);
+            }
+        });
 
         opcje.setText("Opcje");
+        opcje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcjeActionPerformed(evt);
+            }
+        });
 
         statSlowa.setEditable(false);
         statSlowa.setColumns(10);
@@ -206,9 +216,22 @@ public class Okno extends javax.swing.JFrame {
         String gen;
         int n = 0;
         while (n < 10) {
-            
+            oknoCzatu.append("abc\n");
+            n++;
         }
     }//GEN-LAST:event_wyslijActionPerformed
+
+    private void zakonczActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zakonczActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_zakonczActionPerformed
+
+    private void opcjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcjeActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Opcje().setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_opcjeActionPerformed
 
     /**
      * @param args the command line arguments
