@@ -31,7 +31,8 @@ public class Tree {
 
         Node(Node t, ArrayList<String> pref, String suf) {
             this.prefiks = pref;
-            this.sufiksy.add(suf);
+            this.sufiksy = new ArrayList<>();
+            boolean add = this.sufiksy.add(suf);
             this.liczbaWyst = 1;
             this.lewy = null;
             this.prawy = null;

@@ -5,9 +5,10 @@
  */
 package chatsymGUI;
 
+import java.awt.List;
 import java.util.ArrayList;
 import java.util.Random;
-import kontener.Tree;
+import kontener.Kontener;
 
 /**
  *
@@ -22,7 +23,8 @@ public class Okno extends javax.swing.JFrame {
         initComponents();
     }
 
-    Tree t = new Tree();
+    //Tree t = new Tree();
+    Kontener k = new Kontener();
 
     private static Random rand = new Random();
 
@@ -71,7 +73,6 @@ public class Okno extends javax.swing.JFrame {
         oknoCzatu.setColumns(20);
         oknoCzatu.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
         oknoCzatu.setRows(5);
-        oknoCzatu.setText("Użytkownik:\nWitaj!\n\nProgram:\nWitaj użytkowniku!");
         jScrollPane1.setViewportView(oknoCzatu);
 
         jLabel1.setText("Okno czatu");
@@ -209,16 +210,26 @@ public class Okno extends javax.swing.JFrame {
             prefiks.clear();
             prefiks.add(arr[i]);
             prefiks.add(arr[i + 1]);
-            t.dodaj(prefiks, arr[i + 2]);
+            k.dodaj(prefiks, arr[i + 2]);
         }
 
         //generacja
-        String gen;
+        ArrayList<String> gen = new ArrayList<>();
+        Random random = new Random();
+        ArrayList<ArrayList<String>> keys = new ArrayList<>(k.map.keySet());
+        ArrayList<String> randomKey = keys.get(random.nextInt(keys.size()));
+
+        oknoCzatu.append("\n\n" + "Użytkownik:\n" + s);
+        //oknoCzatu.append("\n\n" + "programTEST:\n" + gen);
+        poleTekstowe.setText("");
         int n = 0;
         while (n < 10) {
-            oknoCzatu.append("abc\n");
-            n++;
+            if (!k.map.containsKey(gen)) {
+                ArrayList<String> value = k.map.get(randomKey);
+            }
+
         }
+
     }//GEN-LAST:event_wyslijActionPerformed
 
     private void zakonczActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zakonczActionPerformed
