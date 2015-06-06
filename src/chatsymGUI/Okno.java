@@ -6,6 +6,7 @@
 package chatsymGUI;
 
 import java.util.ArrayList;
+import java.util.Random;
 import kontener.Tree;
 
 /**
@@ -22,6 +23,8 @@ public class Okno extends javax.swing.JFrame {
     }
 
     Tree t = new Tree();
+    
+    private static Random rand = new Random();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,6 +67,7 @@ public class Okno extends javax.swing.JFrame {
             }
         });
 
+        oknoCzatu.setEditable(false);
         oknoCzatu.setColumns(20);
         oknoCzatu.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
         oknoCzatu.setRows(5);
@@ -78,7 +82,8 @@ public class Okno extends javax.swing.JFrame {
 
         opcje.setText("Opcje");
 
-        statSlowa.setColumns(20);
+        statSlowa.setEditable(false);
+        statSlowa.setColumns(10);
         statSlowa.setRows(5);
         jScrollPane2.setViewportView(statSlowa);
 
@@ -86,7 +91,8 @@ public class Okno extends javax.swing.JFrame {
 
         jLabel4.setText("Najczęstsze n-gramy");
 
-        statNgramy.setColumns(20);
+        statNgramy.setEditable(false);
+        statNgramy.setColumns(10);
         statNgramy.setRows(5);
         jScrollPane3.setViewportView(statNgramy);
 
@@ -184,7 +190,7 @@ public class Okno extends javax.swing.JFrame {
     }//GEN-LAST:event_poleTekstoweActionPerformed
 
     private void wyslijActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wyslijActionPerformed
-        // TODO add your handling code here:
+        // dodanie wpisanego tekstu
         String s = poleTekstowe.getText();
         String[] arr = s.split(" ");
         ArrayList<String> prefiks = new ArrayList<>();
@@ -194,6 +200,13 @@ public class Okno extends javax.swing.JFrame {
             prefiks.add(arr[i]);
             prefiks.add(arr[i + 1]);
             t.dodaj(prefiks, arr[i + 2]);
+        }
+
+        //generacja
+        String gen;
+        int n = 0;
+        while (n < 10) {
+            
         }
     }//GEN-LAST:event_wyslijActionPerformed
 

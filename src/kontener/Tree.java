@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class Tree {
 
     private Node head;
+    
+    public ArrayList<Node> wezly;
 
     public void Tree() {
         head = null;
@@ -43,6 +45,7 @@ public class Tree {
     private Node dodaj(Node t, ArrayList<String> pref, String suf) {
         if (t == null) {
             Node n = new Node(t, pref, suf);
+            wezly.add(n);
             return n;
         } else {
             //boolean a = true;
@@ -65,6 +68,7 @@ public class Tree {
                 t.liczbaWyst++;
             }
         }
+        return null;
     }
 
     private Node szukaj(Node t, ArrayList<String> pref) {
@@ -83,5 +87,6 @@ public class Tree {
         } else {
             return t;
         }
+        return null;
     }
 }
