@@ -213,23 +213,39 @@ public class Okno extends javax.swing.JFrame {
             k.dodaj(prefiks, arr[i + 2]);
         }
 
+        oknoCzatu.append("Użytkownik:\n" + s + "\n\n");
+
         //generacja
         ArrayList<String> gen = new ArrayList<>();
         Random random = new Random();
         ArrayList<ArrayList<String>> keys = new ArrayList<>(k.map.keySet());
         ArrayList<String> randomKey = keys.get(random.nextInt(keys.size()));
+        ArrayList<String> value = k.map.get(randomKey);
 
-        oknoCzatu.append("\n\n" + "Użytkownik:\n" + s);
         //oknoCzatu.append("\n\n" + "programTEST:\n" + gen);
         poleTekstowe.setText("");
         int n = 0;
-        while (n < 10) {
+        while (n < 5) {//TODO max dł. odp.
+
             if (!k.map.containsKey(gen)) {
-                ArrayList<String> value = k.map.get(randomKey);
+                for (int i = 0; i < randomKey.size(); i++) {
+                    oknoCzatu.append(randomKey.get(i) + " ");
+                    gen.add(randomKey.get(i));
+                }
+                String suf = value.get(random.nextInt(value.size()));
+                oknoCzatu.append(suf);
+                n += 3;//TODO dł. ngramu
+                gen.add(suf);
+            } else {
+                value = k.map.get(gen);
+                String suf = value.get(random.nextInt(value.size()));
+                oknoCzatu.append(suf + " ");
+                gen.remove(0);
+                gen.add(suf);
+                n++;
             }
-
         }
-
+        oknoCzatu.append("\n\n");
     }//GEN-LAST:event_wyslijActionPerformed
 
     private void zakonczActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zakonczActionPerformed

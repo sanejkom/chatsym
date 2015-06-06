@@ -14,10 +14,10 @@ import java.util.HashMap;
  */
 public class Kontener {
 
-    private HashMap<ArrayList<String>, ArrayList<String>> map;
+    public HashMap<ArrayList<String>, ArrayList<String>> map;
 
     public Kontener() {
-        map = new HashMap<>();
+        this.map = new HashMap<>();
     }
 
     public void dodaj(ArrayList<String> pref, String suf) {
