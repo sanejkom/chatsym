@@ -5,7 +5,7 @@
  */
 package chatsymGUI;
 
-import java.awt.List;
+import chatsym.Chatsym;
 import java.util.ArrayList;
 import java.util.Random;
 import kontener.Kontener;
@@ -25,8 +25,14 @@ public class Okno extends javax.swing.JFrame {
 
     //Tree t = new Tree();
     Kontener k = new Kontener();
+    ArrayList<String> gen = new ArrayList<>();
+    private static int ngram = 3;
+    private static int odpowiedz = 5;
+    
+    //String tmp;
+    //tmp = Chatsym.readFile("abc");
 
-    private static Random rand = new Random();
+    Random rand = new Random();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +78,7 @@ public class Okno extends javax.swing.JFrame {
         oknoCzatu.setEditable(false);
         oknoCzatu.setColumns(20);
         oknoCzatu.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        oknoCzatu.setLineWrap(true);
         oknoCzatu.setRows(5);
         jScrollPane1.setViewportView(oknoCzatu);
 
@@ -115,7 +122,7 @@ public class Okno extends javax.swing.JFrame {
         statGraf.setLayout(statGrafLayout);
         statGrafLayout.setHorizontalGroup(
             statGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 292, Short.MAX_VALUE)
         );
         statGrafLayout.setVerticalGroup(
             statGrafLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,34 +135,33 @@ public class Okno extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(zakoncz)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(opcje)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                        .addComponent(wyslij))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1)
+                    .addComponent(poleTekstowe))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(zakoncz)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(opcje)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                                .addComponent(wyslij))
-                            .addComponent(jScrollPane1)
-                            .addComponent(poleTekstowe))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(statGraf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(252, 252, 252)
-                        .addComponent(jLabel2)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                            .addComponent(statGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,33 +170,30 @@ public class Okno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(poleTekstowe, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(11, 11, 11)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(poleTekstowe, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(wyslij)
                             .addComponent(zakoncz)
                             .addComponent(opcje)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(statGraf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -206,6 +209,7 @@ public class Okno extends javax.swing.JFrame {
         String[] arr = s.split(" ");
         ArrayList<String> prefiks = new ArrayList<>();
         int size = arr.length;
+
         for (int i = 0; i < size - 2; i++) {
             prefiks.clear();
             prefiks.add(arr[i]);
@@ -216,30 +220,55 @@ public class Okno extends javax.swing.JFrame {
         oknoCzatu.append("Użytkownik:\n" + s + "\n\n");
 
         //generacja
-        ArrayList<String> gen = new ArrayList<>();
         Random random = new Random();
         ArrayList<ArrayList<String>> keys = new ArrayList<>(k.map.keySet());
-        ArrayList<String> randomKey = keys.get(random.nextInt(keys.size()));
+        ArrayList<String> randomKey = keys.get(rand.nextInt(keys.size()));
         ArrayList<String> value = k.map.get(randomKey);
-
+        
         //oknoCzatu.append("\n\n" + "programTEST:\n" + gen);
         poleTekstowe.setText("");
+        for (int l = 0; l < ngram-1; l++) { // k < ngram-1
+            gen.add(arr[l]);
+        }
+        int j = ngram; //j = ngram
+        while (!k.map.containsKey(gen) && j < arr.length) {
+            gen.remove(0);
+            gen.add(arr[j]);
+            j++;
+        }
         int n = 0;
-        while (n < 5) {//TODO max dł. odp.
+        while (n < odpowiedz) {//TODO max dł. odp.
+            /*value = k.map.get(gen);
+             if(value==null){
+             value = k.map.get(randomKey);
+             for (int i = 0; i < randomKey.size(); i++) {
+             oknoCzatu.append(n + randomKey.get(i) + "/ ");
+             gen.add(randomKey.get(i));
+             }
+             String suf = value.get(rand.nextInt(value.size()));
+             oknoCzatu.append(suf + " ");
+             n += 3;//TODO dł. ngramu
+             gen.add(suf);
+             gen.remove(0);
+             */
 
             if (!k.map.containsKey(gen)) {
+                keys = new ArrayList<>(k.map.keySet());
+                System.out.println("dl keys   " + keys.size());
+                randomKey = keys.get(rand.nextInt(keys.size()));
                 for (int i = 0; i < randomKey.size(); i++) {
-                    oknoCzatu.append(randomKey.get(i) + " ");
+                    oknoCzatu.append(n + randomKey.get(i) + "/ ");
                     gen.add(randomKey.get(i));
                 }
-                String suf = value.get(random.nextInt(value.size()));
-                oknoCzatu.append(suf);
-                n += 3;//TODO dł. ngramu
+                String suf = value.get(rand.nextInt(value.size()));
+                oknoCzatu.append(suf + " ");
+                n += ngram;//TODO dł. ngramu
+                gen.remove(0);
                 gen.add(suf);
             } else {
                 value = k.map.get(gen);
-                String suf = value.get(random.nextInt(value.size()));
-                oknoCzatu.append(suf + " ");
+                String suf = value.get(rand.nextInt(value.size()));
+                oknoCzatu.append("+" + n + suf + "+ ");
                 gen.remove(0);
                 gen.add(suf);
                 n++;
@@ -313,4 +342,11 @@ public class Okno extends javax.swing.JFrame {
     private javax.swing.JButton wyslij;
     private javax.swing.JButton zakoncz;
     // End of variables declaration//GEN-END:variables
+    public static void setNgram(int n) {
+        Okno.ngram = n;
+    }
+
+    public static void setOdpowiedz(int odp) {
+        Okno.odpowiedz = odp;
+    }
 }

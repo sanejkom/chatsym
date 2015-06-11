@@ -5,17 +5,28 @@
  */
 package chatsym;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author Mateusz
  */
 public class Chatsym {
+    public static String readFile(String fileName) {
+        StringBuilder sb = new StringBuilder();
+        String words;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+
+            while ((words = br.readLine()) != null) {
+                sb.append(words);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
-    
 }

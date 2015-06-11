@@ -17,6 +17,9 @@ public class Opcje extends javax.swing.JFrame {
     public Opcje() {
         initComponents();
     }
+    
+    int n;
+    int odp;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,19 +35,29 @@ public class Opcje extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         dlugoscOdpowiedzi = new javax.swing.JTextField();
         opcjeZapisz = new javax.swing.JButton();
-        opcjeZamknij = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        sciezkaPliku = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Długość n-gramu");
 
-        dlugoscNgramu.setText("2");
-
         jLabel2.setText("Długość odpowiedzi");
 
-        opcjeZapisz.setText("Zapisz");
+        dlugoscOdpowiedzi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlugoscOdpowiedziActionPerformed(evt);
+            }
+        });
 
-        opcjeZamknij.setText("Wyjście");
+        opcjeZapisz.setText("Zapisz i wyjdź");
+        opcjeZapisz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcjeZapiszActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,18 +66,14 @@ public class Opcje extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(opcjeZapisz)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
-                        .addComponent(opcjeZamknij))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(dlugoscNgramu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(dlugoscOdpowiedzi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(opcjeZapisz)
+                    .addComponent(jLabel1)
+                    .addComponent(dlugoscNgramu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(dlugoscOdpowiedzi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(sciezkaPliku, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,15 +86,33 @@ public class Opcje extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dlugoscOdpowiedzi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(opcjeZapisz)
-                    .addComponent(opcjeZamknij))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(sciezkaPliku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(opcjeZapisz)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcjeZapiszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcjeZapiszActionPerformed
+        n = Integer.parseInt(dlugoscNgramu.getText());
+        odp = Integer.parseInt(dlugoscOdpowiedzi.getText());
+        if (n > 1 && n < 6) {
+            Okno.setNgram(n);
+        }
+        if (odp > 0 && odp < 100) {
+            Okno.setOdpowiedz(odp);
+        }
+        dispose();
+    }//GEN-LAST:event_opcjeZapiszActionPerformed
+
+    private void dlugoscOdpowiedziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlugoscOdpowiedziActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlugoscOdpowiedziActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,7 +154,8 @@ public class Opcje extends javax.swing.JFrame {
     private javax.swing.JTextField dlugoscOdpowiedzi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton opcjeZamknij;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton opcjeZapisz;
+    private javax.swing.JTextField sciezkaPliku;
     // End of variables declaration//GEN-END:variables
 }

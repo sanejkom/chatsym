@@ -26,22 +26,15 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="opcjeZapisz" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="230" max="32767" attributes="0"/>
-                      <Component id="opcjeZamknij" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="dlugoscNgramu" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dlugoscOdpowiedzi" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="opcjeZapisz" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="dlugoscNgramu" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="dlugoscOdpowiedzi" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="sciezkaPliku" alignment="0" min="-2" pref="209" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="179" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,11 +49,12 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="dlugoscOdpowiedzi" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="130" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="opcjeZapisz" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="opcjeZamknij" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="sciezkaPliku" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <Component id="opcjeZapisz" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -73,9 +67,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="dlugoscNgramu">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -83,16 +74,24 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="dlugoscOdpowiedzi">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dlugoscOdpowiedziActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="opcjeZapisz">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Zapisz"/>
+        <Property name="text" type="java.lang.String" value="Zapisz i wyjd&#x17a;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="opcjeZapiszActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="opcjeZamknij">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Wyj&#x15b;cie"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="sciezkaPliku">
     </Component>
   </SubComponents>
 </Form>
