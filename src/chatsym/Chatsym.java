@@ -14,19 +14,18 @@ import java.io.IOException;
  * @author Mateusz
  */
 public class Chatsym {
-    public static String readFile(String fileName) {
-        StringBuilder sb = new StringBuilder();
-        String words;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+    public static String readFile(String file) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String line = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        String ls = System.getProperty("line.separator");
 
-            while ((words = br.readLine()) != null) {
-                sb.append(words);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
+            stringBuilder.append(ls);
         }
-        return sb.toString();
+
+        return stringBuilder.toString();
     }
 }

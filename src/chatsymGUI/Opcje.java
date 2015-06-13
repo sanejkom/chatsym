@@ -5,6 +5,10 @@
  */
 package chatsymGUI;
 
+import chatsym.Chatsym;
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mateusz
@@ -17,7 +21,7 @@ public class Opcje extends javax.swing.JFrame {
     public Opcje() {
         initComponents();
     }
-    
+
     int n;
     int odp;
 
@@ -37,6 +41,8 @@ public class Opcje extends javax.swing.JFrame {
         opcjeZapisz = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         sciezkaPliku = new javax.swing.JTextField();
+        wczytajTekstBazowy = new javax.swing.JButton();
+        opcjeZamknij = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,14 +56,30 @@ public class Opcje extends javax.swing.JFrame {
             }
         });
 
-        opcjeZapisz.setText("Zapisz i wyjdź");
+        opcjeZapisz.setText("Zapisz");
         opcjeZapisz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcjeZapiszActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("Ścieżka pliku bazowego");
+
+        sciezkaPliku.setText("E:\\szkoła\\jimp2\\java\\przedwiosnie.txt");
+
+        wczytajTekstBazowy.setText("Wczytaj tekst bazowy");
+        wczytajTekstBazowy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wczytajTekstBazowyActionPerformed(evt);
+            }
+        });
+
+        opcjeZamknij.setText("Zamknij okno");
+        opcjeZamknij.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcjeZamknijActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,14 +88,21 @@ public class Opcje extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(opcjeZapisz)
-                    .addComponent(jLabel1)
-                    .addComponent(dlugoscNgramu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(dlugoscOdpowiedzi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(sciezkaPliku, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(179, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(wczytajTekstBazowy)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(opcjeZamknij))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(opcjeZapisz)
+                            .addComponent(jLabel1)
+                            .addComponent(dlugoscNgramu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(dlugoscOdpowiedzi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(sciezkaPliku, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 26, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,17 +111,21 @@ public class Opcje extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dlugoscNgramu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dlugoscOdpowiedzi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(opcjeZapisz)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sciezkaPliku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(opcjeZapisz)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(wczytajTekstBazowy)
+                    .addComponent(opcjeZamknij))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -107,12 +140,34 @@ public class Opcje extends javax.swing.JFrame {
         if (odp > 0 && odp < 100) {
             Okno.setOdpowiedz(odp);
         }
-        dispose();
     }//GEN-LAST:event_opcjeZapiszActionPerformed
 
     private void dlugoscOdpowiedziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlugoscOdpowiedziActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dlugoscOdpowiedziActionPerformed
+
+    private void wczytajTekstBazowyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wczytajTekstBazowyActionPerformed
+        try {
+            String tekstBazowy = Chatsym.readFile(sciezkaPliku.getText());
+            String[] arr = tekstBazowy.split(" ");
+            ArrayList<String> prefiks = new ArrayList<>();
+            int size = arr.length;
+
+            for (int i = 0; i < size - 2; i++) {
+                prefiks.clear();
+                prefiks.add(arr[i]);
+                prefiks.add(arr[i + 1]);
+                Okno.k.dodaj(prefiks, arr[i + 2]);
+            }
+        } catch (IOException e) {
+            System.out.println("Podany plik nie działa");
+        }
+
+    }//GEN-LAST:event_wczytajTekstBazowyActionPerformed
+
+    private void opcjeZamknijActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcjeZamknijActionPerformed
+        dispose();
+    }//GEN-LAST:event_opcjeZamknijActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,7 +210,9 @@ public class Opcje extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton opcjeZamknij;
     private javax.swing.JButton opcjeZapisz;
     private javax.swing.JTextField sciezkaPliku;
+    private javax.swing.JButton wczytajTekstBazowy;
     // End of variables declaration//GEN-END:variables
 }

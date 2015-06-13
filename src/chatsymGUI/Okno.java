@@ -24,7 +24,7 @@ public class Okno extends javax.swing.JFrame {
     }
 
     //Tree t = new Tree();
-    Kontener k = new Kontener();
+    static Kontener k = new Kontener();
     ArrayList<String> gen = new ArrayList<>();
     private static int ngram = 3;
     private static int odpowiedz = 5;

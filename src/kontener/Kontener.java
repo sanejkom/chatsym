@@ -26,6 +26,7 @@ public class Kontener {
             values = new ArrayList<>();
             map.put(pref, values);
         }
-        values.add(suf);
+        map.get(pref).add(suf);
+        //values.add(suf);
     }
 }
