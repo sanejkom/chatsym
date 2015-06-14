@@ -151,14 +151,24 @@ public class Opcje extends javax.swing.JFrame {
             String tekstBazowy = Chatsym.readFile(sciezkaPliku.getText());
             String[] arr = tekstBazowy.split(" ");
             ArrayList<String> prefiks = new ArrayList<>();
+            //String prefiks2 = "";
             int size = arr.length;
-
-            for (int i = 0; i < size - 2; i++) {
+            for (int i = 0; i < size - Okno.ngram + 1; i++) {
                 prefiks.clear();
-                prefiks.add(arr[i]);
-                prefiks.add(arr[i + 1]);
-                Okno.k.dodaj(prefiks, arr[i + 2]);
-            }
+                for (int j = i; j < i + Okno.ngram - 1; j++) {
+                    prefiks.add(arr[j]);
+                }
+                Okno.k.dodaj(prefiks, arr[i + Okno.ngram - 1]);
+            }/*
+             for (int i = 0; i < size - 2; i++) {
+             prefiks2.clear();
+             prefiks2.add(arr2[i]);
+             prefiks2.add(arr2[i + 1]);
+             //prefiks2 = "";
+             //prefiks2 += arr
+             Okno.k.dodaj(prefiks2, arr2[i + 2]);
+             }*/
+
         } catch (IOException e) {
             System.out.println("Podany plik nie działa");
         }

@@ -25,13 +25,11 @@ public class Okno extends javax.swing.JFrame {
 
     //Tree t = new Tree();
     static Kontener k = new Kontener();
-    ArrayList<String> gen = new ArrayList<>();
-    private static int ngram = 3;
+    public static int ngram = 3;
     private static int odpowiedz = 5;
-    
+
     //String tmp;
     //tmp = Chatsym.readFile("abc");
-
     Random rand = new Random();
 
     /**
@@ -208,38 +206,41 @@ public class Okno extends javax.swing.JFrame {
         String s = poleTekstowe.getText();
         String[] arr = s.split(" ");
         ArrayList<String> prefiks = new ArrayList<>();
+        ArrayList<String> gen = new ArrayList<>();
         int size = arr.length;
-
-        for (int i = 0; i < size - 2; i++) {
+        oknoCzatu.append("arr.length: \n" + size);
+        for (int i = 0; i < size - ngram + 1; i++) {
             prefiks.clear();
-            prefiks.add(arr[i]);
-            prefiks.add(arr[i + 1]);
-            k.dodaj(prefiks, arr[i + 2]);
+            for (int j = i; j < i + ngram - 1; j++) {
+                prefiks.add(arr[j]);
+            }
+            oknoCzatu.append("i+ngram-1: " + (i + ngram - 1) + "\n");
+            k.dodaj(prefiks, arr[i + ngram - 1]);
         }
-
         oknoCzatu.append("Użytkownik:\n" + s + "\n\n");
+        oknoCzatu.append("Program:\n");
 
         //generacja
-        Random random = new Random();
         ArrayList<ArrayList<String>> keys = new ArrayList<>(k.map.keySet());
         ArrayList<String> randomKey = keys.get(rand.nextInt(keys.size()));
         ArrayList<String> value = k.map.get(randomKey);
-        
+        System.out.println("keys size  " + keys.size());
+        System.out.println("value size  " + value.size());
         //oknoCzatu.append("\n\n" + "programTEST:\n" + gen);
         poleTekstowe.setText("");
-        for (int l = 0; l < ngram-1; l++) { // k < ngram-1
+        for (int l = 0; l < ngram - 1; l++) { // k < ngram-1
             gen.add(arr[l]);
         }
         int j = ngram; //j = ngram
-        while (!k.map.containsKey(gen) && j < arr.length) {
+        while (k.map.containsKey(gen) == false && j < arr.length) {
             gen.remove(0);
             gen.add(arr[j]);
             j++;
         }
         int n = 0;
-        while (n < odpowiedz) {//TODO max dł. odp.
+        while (n < odpowiedz) {
             /*value = k.map.get(gen);
-             if(value==null){
+             if (value == null) {
              value = k.map.get(randomKey);
              for (int i = 0; i < randomKey.size(); i++) {
              oknoCzatu.append(n + randomKey.get(i) + "/ ");
@@ -247,30 +248,34 @@ public class Okno extends javax.swing.JFrame {
              }
              String suf = value.get(rand.nextInt(value.size()));
              oknoCzatu.append(suf + " ");
-             n += 3;//TODO dł. ngramu
+             n += ngram;//TODO dł. ngramu
              gen.add(suf);
-             gen.remove(0);
-             */
+             gen.remove(0);*/
 
-            if (!k.map.containsKey(gen)) {
-                keys = new ArrayList<>(k.map.keySet());
-                System.out.println("dl keys   " + keys.size());
+            if (k.map.containsKey(gen) == false) {
+                //keys = new ArrayList<>(k.map.keySet());
+                //System.out.println("dl keys   " + keys.size());
                 randomKey = keys.get(rand.nextInt(keys.size()));
                 for (int i = 0; i < randomKey.size(); i++) {
                     oknoCzatu.append(n + randomKey.get(i) + "/ ");
                     gen.add(randomKey.get(i));
                 }
                 String suf = value.get(rand.nextInt(value.size()));
-                oknoCzatu.append(suf + " ");
-                n += ngram;//TODO dł. ngramu
-                gen.remove(0);
+                oknoCzatu.append("xx-" + suf + " ");
+                n += ngram;
                 gen.add(suf);
+                gen.remove(0);
+                System.out.println("gen0x= " + gen.get(0));
+                System.out.println("gen1x= " + gen.get(1));
             } else {
                 value = k.map.get(gen);
                 String suf = value.get(rand.nextInt(value.size()));
+                System.out.println("value size" + value.size());
                 oknoCzatu.append("+" + n + suf + "+ ");
-                gen.remove(0);
                 gen.add(suf);
+                gen.remove(0);
+                System.out.println("gen0= " + gen.get(0));
+                System.out.println("gen1= " + gen.get(1));
                 n++;
             }
         }
