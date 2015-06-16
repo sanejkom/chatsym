@@ -15,28 +15,21 @@ import java.util.HashMap;
 public class Kontener {
 
     public HashMap<ArrayList<String>, ArrayList<String>> map;
-    //public HashMap<String, ArrayList<String>> map;
 
     public Kontener() {
-        this.map = new HashMap<>();
+        map = new HashMap<>();
     }
 
     public void dodaj(ArrayList<String> pref, String suf) {
         ArrayList<String> values = map.get(pref);
         if (values == null) {
-            values = new ArrayList<>();
+            values = new ArrayList<String>();
             map.put(pref, values);
         }
         map.get(pref).add(suf);
+        //System.out.println("-----prefiks: "+pref+"\n");
+        //System.out.println("-----values: "+map.get(pref)+"\n");
+        //System.out.println("-----entryset: "+map.entrySet()+"\n");
         //values.add(suf);
-    }/*
-    public void dodaj(String pref, String suf) {
-        ArrayList<String> values = map.get(pref);
-        if (values == null) {
-            values = new ArrayList<>();
-            map.put(pref, values);
-        }
-        map.get(pref).add(suf);
-        //values.add(suf);
-    }*/
+    }
 }

@@ -5,9 +5,10 @@
  */
 package chatsymGUI;
 
-import chatsym.Chatsym;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 import kontener.Kontener;
 
 /**
@@ -208,28 +209,34 @@ public class Okno extends javax.swing.JFrame {
         ArrayList<String> prefiks = new ArrayList<>();
         ArrayList<String> gen = new ArrayList<>();
         int size = arr.length;
-        oknoCzatu.append("arr.length: \n" + size);
-        for (int i = 0; i < size - ngram + 1; i++) {
-            prefiks.clear();
-            for (int j = i; j < i + ngram - 1; j++) {
-                prefiks.add(arr[j]);
+        //oknoCzatu.append("arr.length: \n" + size);
+        if (size >= ngram) {
+            for (int i = 0; i < size - ngram + 1; i++) {
+                prefiks.clear();
+                for (int j = i; j < i + ngram - 1; j++) {
+                    prefiks.add(arr[j]);
+                }
+                //oknoCzatu.append("prefiks " + prefiks + "\n");
+                k.dodaj(prefiks, arr[i + ngram - 1]);
             }
-            oknoCzatu.append("i+ngram-1: " + (i + ngram - 1) + "\n");
-            k.dodaj(prefiks, arr[i + ngram - 1]);
         }
         oknoCzatu.append("Użytkownik:\n" + s + "\n\n");
         oknoCzatu.append("Program:\n");
 
         //generacja
+        //Set<ArrayList<String>> set = new HashSet<>(k.map.keySet());
         ArrayList<ArrayList<String>> keys = new ArrayList<>(k.map.keySet());
         ArrayList<String> randomKey = keys.get(rand.nextInt(keys.size()));
         ArrayList<String> value = k.map.get(randomKey);
         System.out.println("keys size  " + keys.size());
         System.out.println("value size  " + value.size());
         //oknoCzatu.append("\n\n" + "programTEST:\n" + gen);
+        System.out.println(k.map.keySet());
         poleTekstowe.setText("");
+        
         for (int l = 0; l < ngram - 1; l++) { // k < ngram-1
-            gen.add(arr[l]);
+            if(l<size)
+                gen.add(arr[l]);
         }
         int j = ngram; //j = ngram
         while (k.map.containsKey(gen) == false && j < arr.length) {
@@ -254,14 +261,17 @@ public class Okno extends javax.swing.JFrame {
 
             if (k.map.containsKey(gen) == false) {
                 //keys = new ArrayList<>(k.map.keySet());
-                //System.out.println("dl keys   " + keys.size());
+                System.out.println("dl keys   " + keys.size());
                 randomKey = keys.get(rand.nextInt(keys.size()));
+                System.out.println("keyssize= " + keys.size());
+                //System.out.println("keys= " + keys.get(0)+ " "+keys.get(1400));
+                System.out.println("randomkey= " + randomKey.get(0) + " " + randomKey.get(1));
                 for (int i = 0; i < randomKey.size(); i++) {
-                    oknoCzatu.append(n + randomKey.get(i) + "/ ");
+                    oknoCzatu.append(randomKey.get(i) + " ");
                     gen.add(randomKey.get(i));
                 }
                 String suf = value.get(rand.nextInt(value.size()));
-                oknoCzatu.append("xx-" + suf + " ");
+                oknoCzatu.append(suf + " ");
                 n += ngram;
                 gen.add(suf);
                 gen.remove(0);
@@ -271,7 +281,7 @@ public class Okno extends javax.swing.JFrame {
                 value = k.map.get(gen);
                 String suf = value.get(rand.nextInt(value.size()));
                 System.out.println("value size" + value.size());
-                oknoCzatu.append("+" + n + suf + "+ ");
+                oknoCzatu.append(suf + " ");
                 gen.add(suf);
                 gen.remove(0);
                 System.out.println("gen0= " + gen.get(0));
